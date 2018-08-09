@@ -1,0 +1,122 @@
+" ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+"
+" VIM Atlantic (dark)
+"
+" ~/.vim/colors/atlantic-dark.vim
+"
+" Author: Ivan Bogachev <sfi0zy@gmail.com> (https://sfi0zy.github.io/), 2018
+" License: MIT
+"
+" ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+
+
+set background=dark
+highlight clear
+
+if exists('syntax on')
+    syntax reset
+endif
+
+
+
+let g:colors_name='atlantic-dark'
+
+
+
+" Colors for terminal (dconf: org->pantheon->terminal->settings):
+"   background: #121212
+"   foreground: #e4e4e4
+"   palette:
+"       #121212:#ff005f:#00af5f:#ffd787:#0087ff:#ff005f:#0087ff:#e4e4e4:
+"       #1c1c1c:#ff005f:#00ad5f:#ffd787:#0087ff:#ff005f:#0087ff:#00875f
+
+let s:black        = 233    " #121212
+let s:dark_grey    = 234    " #1c1c1c
+let s:white        = 254    " #e4e4e4
+let s:light_green  = 35     " #00af5f
+let s:medium_green = 29     " #00875f
+let s:dark_green   = 23     " #005f5f
+let s:blue         = 33     " #0087ff
+let s:gold         = 222    " #ffd787
+let s:red          = 197    " #ff005f
+
+
+
+function! s:hi(group, fg, bg, style)
+    let l:command = 'hi ' . a:group . ' '
+
+    if (!empty(a:fg))
+        let l:command .= 'ctermfg=' . a:fg . ' '
+    endif
+
+    if (!empty(a:bg))
+        let l:command .= 'ctermbg=' . a:bg . ' '
+    endif
+
+    if (!empty(a:style))
+        let l:command .= 'cterm=' . a:style
+    endif
+
+    execute l:command
+endfunction
+
+
+
+" Preview of the color scheme:
+" :so $VIMRUNTIME/syntax/hitest.vim
+
+call s:hi('Normal',         s:white,        s:black,        '')
+call s:hi('SpecialKey',     s:blue,         '',             '')
+call s:hi('NonText',        s:white,        '',             '')
+call s:hi('Directory',      s:blue,         '',             '')
+call s:hi('ErrorMsg',       s:black,        s:red,          '')
+call s:hi('IncSearch',      s:black,        s:gold,         '')
+call s:hi('Search',         s:gold,         s:black,        '')
+call s:hi('MoreMsg',        s:white,        '',             '')
+call s:hi('ModeMsg',        s:white,        '',             'NONE')
+call s:hi('LineNr',         s:dark_green,   '',             '')
+call s:hi('CursorLineNr',   s:dark_green,   '',             '')
+call s:hi('Question',       s:white,        '',             '')
+call s:hi('StatusLine',     s:white,        s:dark_grey,    'NONE')
+call s:hi('StatusLineNC',   s:dark_grey,    s:white,        '')
+call s:hi('VertSplit',      s:dark_grey,    s:black,        '')
+call s:hi('Title',          s:white,        '',             '')
+call s:hi('Visual',         s:black,        s:white,        '')
+call s:hi('VisualNOS',      s:black,        s:white,        '')
+call s:hi('WarningMSG',     s:red,          '',             '')
+call s:hi('WildMenu',       s:black,        s:gold,         '')
+call s:hi('Folded',         s:blue,         s:dark_grey,    '')
+call s:hi('FoldColumn',     s:blue,         s:dark_grey,    '')
+call s:hi('DiffAdd',        s:white,        s:light_green,  '')
+call s:hi('DiffChange',     s:white,        s:red,          '')
+call s:hi('DiffDelete',     s:white,        s:blue,         '')
+call s:hi('DiffText',       s:white,        s:red,          'NONE')
+call s:hi('SignColumn',     s:blue,         s:dark_grey,    '')
+call s:hi('Conceal',        s:white,        '',             '')
+call s:hi('SpellBad',       s:white,        s:red,          '')
+call s:hi('SpellCap',       s:white,        s:blue,         '')
+call s:hi('SpellRare',      s:light_green,  s:gold,         '')
+call s:hi('SpellLocal',     s:blue,         s:white,        '')
+call s:hi('Pmenu',          s:black,        s:red,          '')
+call s:hi('PmenuSel',       s:black,        s:dark_green,   '')
+call s:hi('PmenuSbar',      s:white,        s:dark_grey,    '')
+call s:hi('PmenuThumb',     s:dark_grey,    s:white,        '')
+call s:hi('TabLine',        s:white,        s:dark_grey,    '')
+call s:hi('TabLineSel',     s:white,        '',             '')
+call s:hi('TabLineFill',    s:black,        s:white,        '')
+call s:hi('CursorColumn',   s:white,        s:dark_grey,    '')
+call s:hi('CursorLine',     s:gold,         '',             '')
+call s:hi('ColorColumn',    '',             s:dark_grey,    '')
+call s:hi('MatchParen',     s:white,        s:blue,         '')
+call s:hi('Comment',        s:dark_green,   '',             'italic')
+call s:hi('Constant',       s:blue,         '',             '')
+call s:hi('Special',        s:gold,         '',             '')
+call s:hi('Identifier',     s:white,        '',             'NONE')
+call s:hi('Statement',      s:light_green,  '',             '')
+call s:hi('PreProc',        s:medium_green, '',             '')
+call s:hi('Type',           s:light_green,  '',             '')
+call s:hi('Underlined',     s:blue,         '',             '')
+call s:hi('Error',          s:red,          s:black,        '')
+call s:hi('Todo',           s:light_green,  s:black,        'underline,italic')
+

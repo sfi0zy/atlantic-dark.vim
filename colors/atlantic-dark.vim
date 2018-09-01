@@ -31,15 +31,15 @@ let g:colors_name='atlantic-dark'
 "       #121212:#ff005f:#00af5f:#ffd787:#0087ff:#ff005f:#0087ff:#e4e4e4:
 "       #1c1c1c:#ff005f:#00ad5f:#ffd787:#0087ff:#ff005f:#0087ff:#00875f
 
-let s:black        = 233    " #121212
-let s:dark_grey    = 234    " #1c1c1c
-let s:white        = 254    " #e4e4e4
-let s:light_green  = 35     " #00af5f
-let s:medium_green = 29     " #00875f
-let s:dark_green   = 23     " #005f5f
-let s:blue         = 33     " #0087ff
-let s:gold         = 222    " #ffd787
-let s:red          = 197    " #ff005f
+let s:black        = { 'cterm': '233', 'gui': '#121212' }
+let s:dark_grey    = { 'cterm': '234', 'gui': '#1c1c1c' }
+let s:white        = { 'cterm': '254', 'gui': '#e4e4e4' }
+let s:light_green  = { 'cterm':  '35', 'gui': '#00af5f' }
+let s:medium_green = { 'cterm':  '29', 'gui': '#00875f' }
+let s:dark_green   = { 'cterm':  '23', 'gui': '#005f5f' }
+let s:blue         = { 'cterm':  '33', 'gui': '#0087ff' }
+let s:gold         = { 'cterm': '222', 'gui': '#ffd787' }
+let s:red          = { 'cterm': '197', 'gui': '#ff005f' }
 
 
 
@@ -47,15 +47,18 @@ function! s:hi(group, fg, bg, style)
     let l:command = 'hi ' . a:group . ' '
 
     if (!empty(a:fg))
-        let l:command .= 'ctermfg=' . a:fg . ' '
+        let l:command .= 'ctermfg=' . a:fg['cterm'] 
+                    \ .   ' guifg=' . a:fg['gui'] . ' '
     endif
 
     if (!empty(a:bg))
-        let l:command .= 'ctermbg=' . a:bg . ' '
+        let l:command .= 'ctermbg=' . a:bg['cterm']
+                    \ .   ' guibg=' . a:bg['gui'] . ' '
     endif
 
     if (!empty(a:style))
         let l:command .= 'cterm=' . a:style
+                    \ .   ' gui=' . a:style . ' '
     endif
 
     execute l:command
